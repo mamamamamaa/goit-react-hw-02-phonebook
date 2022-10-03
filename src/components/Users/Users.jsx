@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Label } from 'components/Form/Form.styled';
 import { FindUser, DeleteBtn, User } from './Users.styled';
+import PropTypes from 'prop-types';
 
 export class Users extends Component {
   state = {
@@ -46,3 +47,10 @@ export class Users extends Component {
     );
   }
 }
+
+Users.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.objectOf(PropTypes.string.isRequired).isRequired
+  ).isRequired,
+  handleDelete: PropTypes.func.isRequired,
+};

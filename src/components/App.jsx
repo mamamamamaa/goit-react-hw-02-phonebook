@@ -18,7 +18,12 @@ export class App extends Component {
   };
 
   handleSubmit = ({ name, number }, actions) => {
-    if (!this.state.contacts.find(user => user.name === name)) {
+    const normalizedName = name.toLowerCase();
+    if (
+      !this.state.contacts.find(
+        user => user.name.toLowerCase() === normalizedName
+      )
+    ) {
       this.setState(prevstate => ({
         contacts: [...prevstate.contacts, { id: nanoid(), name, number }],
       }));
